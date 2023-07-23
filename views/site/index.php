@@ -2,51 +2,39 @@
 
 /** @var yii\web\View $this */
 
-$this->title = 'My Yii Application';
+use yii\helpers\Url;
+
+$this->title = 'Treinato';
 ?>
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <h1 class="display-4">Congratulations!</h1>
+        <h1 class="display-4"><?=$this->title?>!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Seu parceiro definitivo para aprimorar seus treinos e acompanhar o seu progresso!</p>
 
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
+        <p><a class="btn btn-lg btn-success" href="<?= Url::to(['site/login']) ?>">Faça o login <i class="fas fa-arrow-right"></i> </a></p>
     </div>
 
     <div class="body-content">
+        <div class="site-about">
 
-        <div class="row">
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
+            <h5>
+                O Treinato é uma plataforma projetada exclusivamente para auxiliá-lo(a) na organização eficiente dos seus treinos, proporcionando uma experiência única e personalizada. Seja qual for o seu objetivo - seja ganhar massa muscular, emagrecer, melhorar a resistência ou simplesmente levar um estilo de vida mais ativo - o Treinato está aqui para impulsionar o seu sucesso.
+            </h5>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <h5>
+                Com recursos intuitivos e de fácil utilização, você poderá planejar e monitorar suas sessões de treinamento de maneira prática e efetiva. Além disso, o Treinato armazena um histórico detalhado das suas atividades, permitindo que você acompanhe sua evolução ao longo do tempo. Imagine poder visualizar o quanto progrediu em sua jornada de fitness!
+            </h5>
 
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
+            <h5>
+                Desperte o atleta dentro de você e descubra a motivação para superar seus limites. Através do Treinato, estabeleça metas alcançáveis e mantenha-se motivado(a) com cada conquista que alcançar. Nossa plataforma é um verdadeiro parceiro de treinamento, proporcionando uma experiência gratificante em busca de um corpo e mente mais saudáveis.
+            </h5>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <h5>
+                Não espere mais para dar um passo em direção a uma versão melhor de si mesmo(a). Junte-se ao Treinato hoje e comece a trilhar o caminho para o seu melhor desempenho físico e mental!
+            </h5>
 
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
         </div>
 
     </div>

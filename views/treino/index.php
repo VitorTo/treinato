@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div>
         <h1><?= Html::encode($this->title) ?></h1>
         <span>Visualize seus treinos, crie novos e exclua os antigos.</span>
-        <p style="position: absolute; right: 128px; top: 7.5em; width: 15em;">
+        <p class="col-md-3 mt-3">
             <?= Html::a(Yii::t('app', '<i class="fas fa-dumbbell"></i> Criar Treino'), ['create'], ['class' => 'btn btn-success w-100']) ?>
         </p>
     </div>

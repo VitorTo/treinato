@@ -10,8 +10,13 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Historicos'), 'url' 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="historico-create">
+    
+    <div>
+        <h1><?= Html::encode($this->title) ?></h1>
+        <span>Defina o nome do treino e salve para adicionar exercícios a esse treino.</span>
+    </div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <hr>
 
     <?= $this->render('_form', [
         'model' => $model,

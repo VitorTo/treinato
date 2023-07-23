@@ -23,24 +23,27 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 </style>
 
-<div class="semana-index">
+<div class="semana-index" style="width: 95%;">
 
     <div>
         <h1><?= Html::encode($this->title) ?></h1>
         <span>Visualize as suas semanas, crie novas e exclua as antigas.</span>
-        <p style="position: absolute; right: 128px; top: 7.5em; width: 15em;">
+        <p class="col-md-3 mt-3">
             <?= Html::a(Yii::t('app', '<i class="fas fa-dumbbell"></i> Criar Semana'), ['create'], ['class' => 'btn btn-success w-100']) ?>
         </p>
     </div>
 
     <hr>
 
-    <?php Pjax::begin(); ?>
+    <!-- < ?php Pjax::begin(); ?> -->
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
     ?>
 
+    <div class="table-responsive">
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'summary' => " <div style='display: flex; justify-content: space-between;'> <div class='div-content-summary-showing' > Mostrando <strong>{begin}-{end}</strong> de <strong>{totalCount}</strong> itens </div>  <div class='div-content-sumarry-page'> Página <strong>{page}</strong> de <strong>{pageCount}</strong></div></div> ",
         'columns' => [
 
             [
@@ -360,6 +363,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    <?php Pjax::end(); ?>
+    </div>
+
+    <!-- < ?php Pjax::end(); ?> -->
 
 </div>
