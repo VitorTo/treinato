@@ -48,15 +48,11 @@ class LoginForm extends Model
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Usuário ou senha incorretos.');
             }
         }
     }
 
-    /**
-     * Logs in a user using the provided username and password.
-     * @return bool whether the user is logged in successfully
-     */
     public function login()
     {
         if ($this->validate()) {
@@ -65,17 +61,12 @@ class LoginForm extends Model
         return false;
     }
 
-    /**
-     * Finds user by [[username]]
-     *
-     * @return User|null
-     */
     public function getUser()
     {
         if ($this->_user === false) {
             $this->_user = User::findByUsername($this->username);
         }
-
+        
         return $this->_user;
     }
 }
