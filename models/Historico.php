@@ -53,11 +53,11 @@ class Historico extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'foto' => Yii::t('app', 'Foto'),
             'status' => Yii::t('app', 'Status'),
-            'dt_create' => Yii::t('app', 'Dt Create'),
+            'dt_create' => Yii::t('app', 'Data'),
             'dt_update' => Yii::t('app', 'Dt Update'),
             'dt_delete' => Yii::t('app', 'Dt Delete'),
-            'treino_id' => Yii::t('app', 'Treino ID'),
-            'proporcao_id' => Yii::t('app', 'Proporcao ID'),
+            'treino_id' => Yii::t('app', 'Treino'),
+            'proporcao_id' => Yii::t('app', 'Proporção'),
         ];
     }
 

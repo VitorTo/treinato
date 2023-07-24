@@ -54,12 +54,12 @@ class Proporcao extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'status' => Yii::t('app', 'Status'),
-            'dt_create' => Yii::t('app', 'Dt Create'),
+            'dt_create' => Yii::t('app', 'Data'),
             'dt_update' => Yii::t('app', 'Dt Update'),
             'dt_delete' => Yii::t('app', 'Dt Delete'),
             'user_id' => Yii::t('app', 'User ID'),
-            'peso_id' => Yii::t('app', 'Peso ID'),
-            'altura_id' => Yii::t('app', 'Altura ID'),
+            'peso_id' => Yii::t('app', 'Peso'),
+            'altura_id' => Yii::t('app', 'Altura'),
         ];
     }
 

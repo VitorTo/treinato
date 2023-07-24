@@ -49,7 +49,7 @@ class Treino extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'nome' => Yii::t('app', 'Nome'),
             'status' => Yii::t('app', 'Status'),
-            'dt_create' => Yii::t('app', 'Dt Create'),
+            'dt_create' => Yii::t('app', 'Data'),
             'dt_update' => Yii::t('app', 'Dt Update'),
             'dt_delete' => Yii::t('app', 'Dt Delete'),
         ];

@@ -96,12 +96,13 @@ class HistoricoController extends Controller
             $model->loadDefaultValues();
         }
 
+        $proporcao = Proporcao::findOne(['status' => 1, 'user_id' => $user_id]);
+
         if(!empty($proporcao)) {
             $altura = Yii::$app->uteis->findModelValue('app\models\Altura', $proporcao->altura_id, 'altura');
             $peso = Yii::$app->uteis->findModelValue('app\models\Peso', $proporcao->peso_id, 'peso');
         }
 
-        $proporcao = Proporcao::findOne(['status' => 1, 'user_id' => $user_id]);
         $dadosAtuais['Peso'] = !empty($peso) ? $peso : '';
         $dadosAtuais['Altura'] = !empty($altura) ? $altura : '';
 

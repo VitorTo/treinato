@@ -24,7 +24,7 @@ $user_id = Yii::$app->user->identity->id;
             <div class="card pb-4">
                 <div class="col-md-12 mt-2">
                     <h5>Proporção atual</h5>
-                    <small>Preencha suas proporções e clique em salvar proporção</small>
+                    <small>Preencha suas proporções e clique em <?= !empty($dadosAtuais) ? 'atualizar' : 'salvar' ?> proporção</small>
                 </div>
                 <hr>
                 <div class="row">
@@ -37,7 +37,7 @@ $user_id = Yii::$app->user->identity->id;
                         <input type="text" name="Altura[altura]" id="Altura" class="form-control" placeholder="Ex: 180cm" value="<?= !empty($dadosAtuais['Altura']) ? $dadosAtuais['Altura'] : '' ?>" />
                     </div>
                     <div class="col-md-4 btn-div">
-                        <button class="btn btn-success w-100" type="submit"> <i class="fas fa-check"></i> Salvar proporção</button>
+                        <button class="btn btn-success w-100" type="submit"> <i class="fas fa-check"></i> <?= !empty($dadosAtuais) ? 'Atualizar' : 'Salvar'  ?> medidas</button>
                     </div>
                 </div>
             </div>
@@ -52,8 +52,8 @@ $user_id = Yii::$app->user->identity->id;
     <div class="row">
         <div class="card pb-4">
             <div class="col-md-12 mt-2">
-                <h5>Foto, medidas e treino atual</h5>
-                <small>Preencha suas medidas e clique em salvar</small>
+                <h5>Foto e treino atual</h5>
+                <small>Preencha seus dados e clique em salvar</small>
             </div>
             <hr>
             <div class="row">
