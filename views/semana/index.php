@@ -350,11 +350,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::className(),
                 'header' => 'Ações',
                 'options' => ['style' => 'width: 40px; justify-content: center;'],
-                'buttonOptions' => ['class' => 'btn btn-outline-danger'],
-                'template' => '<div class="btn-group-vertical btn-group-sm text-center" > {delete} </div>',
+                'buttonOptions' => ['class' => 'btn btn-outline-primary'],
+                'template' => '<div class="btn-group-vertical btn-group-sm text-center" > {update} {delete} </div>',
                 'urlCreator' => function ($action, Semana $model, $key, $index, $column) {
            
                     if($action == 'delete') {
+                        return Url::toRoute([$action, 'id' => $model->id]);
+                    }
+
+                    if($action == 'update') {
                         return Url::toRoute([$action, 'id' => $model->id]);
                     }
                 }

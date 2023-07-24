@@ -62,6 +62,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         if($action == 'delete') {
                             return Url::toRoute([$action, 'id' => $model->id]);
                         }
+                        
+                        if($action == 'update') {
+                            return Url::toRoute([$action, 'id' => $model->id]);
+                        }
                     }
                 ],
             ],

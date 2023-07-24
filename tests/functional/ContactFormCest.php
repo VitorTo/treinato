@@ -17,10 +17,10 @@ class ContactFormCest
         $I->submitForm('#contact-form', []);
         $I->expectTo('see validations errors');
         $I->see('Contact', 'h1');
-        $I->see('Name cannot be blank');
-        $I->see('Email cannot be blank');
-        $I->see('Subject cannot be blank');
-        $I->see('Body cannot be blank');
+        $I->see('Name não pode estar em branco');
+        $I->see('Email não pode estar em branco');
+        $I->see('Subject não pode estar em branco');
+        $I->see('Body não pode estar em branco');
         $I->see('The verification code is incorrect');
     }
 
@@ -34,10 +34,10 @@ class ContactFormCest
             'ContactForm[verifyCode]' => 'testme',
         ]);
         $I->expectTo('see that email address is wrong');
-        $I->dontSee('Name cannot be blank', '.help-inline');
+        $I->dontSee('Name não pode estar em branco', '.help-inline');
         $I->see('Email is not a valid email address.');
-        $I->dontSee('Subject cannot be blank', '.help-inline');
-        $I->dontSee('Body cannot be blank', '.help-inline');
+        $I->dontSee('Subject não pode estar em branco', '.help-inline');
+        $I->dontSee('Body não pode estar em branco', '.help-inline');
         $I->dontSee('The verification code is incorrect', '.help-inline');        
     }
 

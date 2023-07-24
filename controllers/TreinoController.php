@@ -130,10 +130,32 @@ class TreinoController extends Controller
 
         if ($this->request->isPost && $model->load($this->request->post())) {
 
-            // define data e status
-            $model = Yii::$app->uteis->dateUpdate($model);
+            $post = Yii::$app->request->post();
 
-            $model->save();
+            // define data e status
+            $model = Yii::$app->uteis->dateUpdate($model);            
+
+            $model->update();
+
+            $idTreino = !empty($model->id) ? $model->id : '';
+            
+            // excluir treino antigo
+            $antigoHas = TreinoHasExercicio::findAll(['treino_id' => $idTreino]);
+            // Itera sobre os registros encontrados e exclui um por um
+            foreach ($antigoHas as $exercicio) {
+                $exercicio->delete();
+            }
+
+            // salva exercicio, define data e status
+            foreach($post['Exercicio'] as $key => $exercicio_id) {
+
+                $modelTreinoExercicio = new TreinoHasExercicio();
+                $modelTreinoExercicio->treino_id = $idTreino;
+                $modelTreinoExercicio->exercicio_id = $exercicio_id;
+                $modelTreinoExercicio = Yii::$app->uteis->dateCreate($modelTreinoExercicio);
+                $modelTreinoExercicio->save();
+
+            }
 
             // define alert
             if (!empty($model->id)) {

@@ -15,7 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="treino-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div>
+        <h1><?= Html::encode($this->title) ?></h1>
+        <span>Visualize o seu treino.</span>
+    </div>
+    
+    <hr>
 
     <?= DetailView::widget([
         'model' => $model,
@@ -26,23 +31,21 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'nome',
                 'label' => 'Exercícios',
                 'format' => 'raw',
-                'value' => function($model) {
+                'value' => function ($model) {
 
                     $treinoExercicio = TreinoHasExercicio::findAll(['status' => 1, 'treino_id' => $model->id]);
 
                     $exercicios = '';
-                    foreach($treinoExercicio as $value) {
+                    foreach ($treinoExercicio as $value) {
 
                         $exercicio = Exercicio::findOne($value['exercicio_id']);
 
-                        if(empty($exercicio)) continue;
+                        if (empty($exercicio)) continue;
 
-                        $exercicios .= $exercicio['nome'].' - '. $exercicio['peso'].'<br />';
-
+                        $exercicios .= $exercicio['nome'] . ' - ' . $exercicio['peso'] . '<br />';
                     }
 
                     return $exercicios;
-
                 }
             ],
             [
@@ -50,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function ($model) {
                     $valor = ' <span class="badge bg-danger">Desativado</span>';
-                    if($model->status == 1) {
+                    if ($model->status == 1) {
                         $valor = ' <span class="badge bg-success">Ativo</span>';
                     }
 

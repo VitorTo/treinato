@@ -55,12 +55,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     'header' => 'Ações',
                     'options' => ['style' => 'width: 40px; justify-content: center;'],
                     'buttonOptions' => ['class' => 'btn btn-outline-primary'],
-                    'template' => '<div class="btn-group-vertical btn-group-sm text-center" > {view} {delete} </div>',
+                    'template' => '<div class="btn-group-vertical btn-group-sm text-center" > {view} {update} {delete} </div>',
                     'urlCreator' => function ($action, Treino $model, $key, $index, $column) {
                         if($action == 'delete') {
                             return Url::toRoute([$action, 'id' => $model->id]);
                         }
                         if($action == 'view') {
+                            return Url::toRoute([$action, 'id' => $model->id]);
+                        }
+                        if($action == 'update') {
                             return Url::toRoute([$action, 'id' => $model->id]);
                         }
                     }

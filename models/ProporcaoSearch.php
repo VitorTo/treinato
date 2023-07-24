@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Historico;
+use app\models\Proporcao;
 
 /**
- * HistoricoSearch represents the model behind the search form of `app\models\Historico`.
+ * ProporcaoSearch represents the model behind the search form of `app\models\Proporcao`.
  */
-class HistoricoSearch extends Historico
+class ProporcaoSearch extends Proporcao
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class HistoricoSearch extends Historico
     public function rules()
     {
         return [
-            [['id', 'status', 'treino_id', 'proporcao_id'], 'integer'],
-            [['foto', 'dt_create', 'dt_update', 'dt_delete'], 'safe'],
+            [['id', 'status', 'user_id', 'peso_id', 'altura_id'], 'integer'],
+            [['dt_create', 'dt_update', 'dt_delete'], 'safe'],
         ];
     }
 
@@ -40,10 +40,9 @@ class HistoricoSearch extends Historico
      */
     public function search($params)
     {
-        $query = Historico::find();
+        $query = Proporcao::find();
 
         // add conditions that should always apply here
-        $query->orderBy('dt_create desc');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -64,11 +63,10 @@ class HistoricoSearch extends Historico
             'dt_create' => $this->dt_create,
             'dt_update' => $this->dt_update,
             'dt_delete' => $this->dt_delete,
-            'treino_id' => $this->treino_id,
-            'proporcao_id' => $this->proporcao_id,
+            'user_id' => $this->user_id,
+            'peso_id' => $this->peso_id,
+            'altura_id' => $this->altura_id,
         ]);
-
-        $query->andFilterWhere(['like', 'foto', $this->foto]);
 
         return $dataProvider;
     }

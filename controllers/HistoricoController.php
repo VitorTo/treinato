@@ -4,9 +4,12 @@ namespace app\controllers;
 
 use app\models\Historico;
 use app\models\HistoricoSearch;
+use app\models\Proporcao;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * HistoricoController implements the CRUD actions for Historico model.
@@ -69,17 +72,42 @@ class HistoricoController extends Controller
     public function actionCreate()
     {
         $model = new Historico();
+        $user_id = Yii::$app->user->identity->id;
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'treino_id' => $model->treino_id]);
+            if ($model->load($this->request->post())) {
+
+                $post = Yii::$app->request->post();
+                $uploadedFiles = UploadedFile::getInstancesByName('Historico[foto]');   
+
+                foreach ($uploadedFiles as $file) {
+                    $base64Imagem = base64_encode(file_get_contents($file->tempName));
+                    $imagemCriptografada = Yii::$app->uteis->criptografar($base64Imagem, 'totech');
+                    $model->foto .= $imagemCriptografada.'|';                                       
+                }
+
+                $model = Yii::$app->uteis->dateCreate($model);
+                $model->save();
+                
+                return $this->redirect(['index']);
             }
+            
         } else {
             $model->loadDefaultValues();
         }
 
+        if(!empty($proporcao)) {
+            $altura = Yii::$app->uteis->findModelValue('app\models\Altura', $proporcao->altura_id, 'altura');
+            $peso = Yii::$app->uteis->findModelValue('app\models\Peso', $proporcao->peso_id, 'peso');
+        }
+
+        $proporcao = Proporcao::findOne(['status' => 1, 'user_id' => $user_id]);
+        $dadosAtuais['Peso'] = !empty($peso) ? $peso : '';
+        $dadosAtuais['Altura'] = !empty($altura) ? $altura : '';
+
         return $this->render('create', [
             'model' => $model,
+            'dadosAtuais' => $dadosAtuais
         ]);
     }
 
