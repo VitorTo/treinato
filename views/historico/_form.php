@@ -17,35 +17,6 @@ $user_id = Yii::$app->user->identity->id;
 
 <div class="historico-form">
 
-    <!-- form altura/peso -->
-    <form id="formPesoAltura" action="<?= Url::to(['proporcao/pesoaltura']) ?>" method="POST">
-        <div class="row">
-            <input type="text" name="_csrf" value='<?= Html::csrfMetaTags() ?>' hidden />
-            <div class="card pb-4">
-                <div class="col-md-12 mt-2">
-                    <h5>Proporção atual</h5>
-                    <small>Preencha suas proporções e clique em <?= !empty($dadosAtuais) ? 'atualizar' : 'salvar' ?> proporção</small>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="Peso">Peso</label>
-                        <input type="text" name="Peso[peso]" id="Peso" class="form-control" placeholder="Ex: 80kg" value="<?= !empty($dadosAtuais['Peso']) ? $dadosAtuais['Peso'] : '' ?>" />
-                    </div>
-                    <div class="col-md-4">
-                        <label for="Altura">Altura</label>
-                        <input type="text" name="Altura[altura]" id="Altura" class="form-control" placeholder="Ex: 180cm" value="<?= !empty($dadosAtuais['Altura']) ? $dadosAtuais['Altura'] : '' ?>" />
-                    </div>
-                    <div class="col-md-4 btn-div">
-                        <button class="btn btn-success w-100" type="submit"> <i class="fas fa-check"></i> <?= !empty($dadosAtuais) ? 'Atualizar' : 'Salvar'  ?> medidas</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </form>
-    <br>
-
     <?php $form = ActiveForm::begin([
         'options' => ['enctype' => 'multipart/form-data']
     ]); ?>

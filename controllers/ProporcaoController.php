@@ -69,25 +69,28 @@ class ProporcaoController extends Controller
         
         $user_id = Yii::$app->user->identity->id;
 
-        $modelAltura = Altura::findOne(['altura' => $post['Altura']['altura']]);
-        $modelPeso = Peso::findOne(['peso' => $post['Peso']['peso']]);
-        
+        $modelAltura = Altura::findOne(['altura' => $post['Altura']['altura'], 'user_id' => $user_id]);
+        $modelPeso = Peso::findOne(['peso' => $post['Peso']['peso'], 'user_id' => $user_id]);
+
         // verifica existe altura
         if(empty($modelAltura)) {
+            Altura::updateAll([ 'status' => -1 ], 'user_id = :user_id', [':user_id' => $user_id]);
             $modelAltura = new Altura();
             $modelAltura->attributes = $post['Altura'];
             $modelAltura->user_id = $user_id;
             $modelAltura = Yii::$app->uteis->dateCreate($modelAltura);
-            $modelAltura->save();
-        }
+            $modelAltura->save(false);
+
+        } 
 
         // verifica existe peso
         if(empty($modelPeso)) {
+            Peso::updateAll([ 'status' => -1 ], 'user_id = :user_id', [':user_id' => $user_id]);
             $modelPeso = new Peso();
             $modelPeso->attributes = $post['Peso'];
             $modelPeso->user_id = $user_id;
             $modelPeso = Yii::$app->uteis->dateCreate($modelPeso);
-            $modelPeso->save();
+            $modelPeso->save(false);
         }
         
         // pegando ids peso e altura
@@ -96,12 +99,14 @@ class ProporcaoController extends Controller
         
         // verifica se existe proporção
         $modelProporcao = Proporcao::findOne(['status' => 1, 'user_id' => $user_id, 'peso_id' => $peso, 'altura_id' => $altura]);
-        if(!empty($modelProporcao)) {
+        if(empty($modelProporcao)) {
+            Proporcao::updateAll([ 'status' => -1 ], 'user_id =:user_id', [':user_id' => $user_id]);
             $modelProporcao = new Proporcao();
             $modelProporcao->peso_id = $peso;
             $modelProporcao->altura_id = $altura;
+            $modelProporcao->user_id = $user_id;
             $modelProporcao = Yii::$app->uteis->dateCreate($modelProporcao);
-            $modelProporcao->save();
+            $modelProporcao->save(false);
         }
 
         // define alert
@@ -111,7 +116,7 @@ class ProporcaoController extends Controller
             Yii::$app->uteis->setAlert('error', 'Algo deu errado ao inserir a proporção ');
         }        
         
-        return $this->redirect(['historico/create']);
+        return $this->redirect(['site/index']);
     }
     /**
      * Creates a new Proporcao model.

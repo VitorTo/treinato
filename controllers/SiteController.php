@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Proporcao;
 
 class SiteController extends Controller
 {
@@ -61,7 +62,23 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+
+        if(empty(Yii::$app->user->identity->id)){
+
+            return $this->render('index');
+
+        } else {
+
+            $user_id = Yii::$app->user->identity->id;
+
+            $dadosAtuais = Proporcao::findOne([ 'status' => '1', 'user_id' => $user_id]);
+
+            return $this->render('index',[
+                'dadosAtuais' => $dadosAtuais
+            ]);
+
+        }
+        
     }
 
     /**

@@ -5,6 +5,7 @@ namespace app\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Historico;
+use Yii;
 
 /**
  * HistoricoSearch represents the model behind the search form of `app\models\Historico`.
@@ -43,6 +44,7 @@ class HistoricoSearch extends Historico
         $query = Historico::find();
 
         // add conditions that should always apply here
+        $query->where(['user_id' => Yii::$app->user->identity->id]);
         $query->orderBy('dt_create desc');
 
         $dataProvider = new ActiveDataProvider([

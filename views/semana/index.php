@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $valor = '<span class="badge bg-danger">Indefinido</span>';
                     if(!empty($model->terca)){
                         $nomeValor = Yii::$app->uteis->findModelValue('app\models\Treino', $model->terca, 'nome');
-                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#segunda">'.$nomeValor.'</span>';
+                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#terca">'.$nomeValor.'</span>';
                         
                         $treinoExercicio = TreinoHasExercicio::findAll(['status' => 1, 'treino_id' => $model->terca]);
 
@@ -151,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $valor = '<span class="badge bg-danger">Indefinido</span>';
                     if(!empty($model->quarta)){
                         $nomeValor = Yii::$app->uteis->findModelValue('app\models\Treino', $model->quarta, 'nome');
-                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#segunda">'.$nomeValor.'</span>';
+                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#quarta">'.$nomeValor.'</span>';
                         
                         $treinoExercicio = TreinoHasExercicio::findAll(['status' => 1, 'treino_id' => $model->quarta]);
 
@@ -198,7 +198,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $valor = '<span class="badge bg-danger">Indefinido</span>';
                     if(!empty($model->quinta)){
                         $nomeValor = Yii::$app->uteis->findModelValue('app\models\Treino', $model->quinta, 'nome');
-                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#segunda">'.$nomeValor.'</span>';
+                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#quinta">'.$nomeValor.'</span>';
                         
                         $treinoExercicio = TreinoHasExercicio::findAll(['status' => 1, 'treino_id' => $model->quinta]);
 
@@ -245,7 +245,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $valor = '<span class="badge bg-danger">Indefinido</span>';
                     if(!empty($model->sexta)){
                         $nomeValor = Yii::$app->uteis->findModelValue('app\models\Treino', $model->sexta, 'nome');
-                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#segunda">'.$nomeValor.'</span>';
+                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#sexta">'.$nomeValor.'</span>';
                         
                         $treinoExercicio = TreinoHasExercicio::findAll(['status' => 1, 'treino_id' => $model->sexta]);
 
@@ -292,7 +292,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $valor = '<span class="badge bg-danger">Indefinido</span>';
                     if(!empty($model->sabado)){
                         $nomeValor = Yii::$app->uteis->findModelValue('app\models\Treino', $model->sabado, 'nome');
-                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#segunda">'.$nomeValor.'</span>';
+                        $valor = '<span class="badge bg-success" data-bs-toggle="modal" data-bs-target="#sabado">'.$nomeValor.'</span>';
                         
                         $treinoExercicio = TreinoHasExercicio::findAll(['status' => 1, 'treino_id' => $model->sabado]);
 

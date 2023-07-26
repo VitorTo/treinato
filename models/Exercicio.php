@@ -52,7 +52,7 @@ class Exercicio extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'nome' => Yii::t('app', 'Nome'),
             'peso' => Yii::t('app', 'Peso'),
-            'observacao' => Yii::t('app', 'Observacao'),
+            'observacao' => Yii::t('app', 'Observação'),
             'status' => Yii::t('app', 'Status'),
             'dt_create' => Yii::t('app', 'Dt Create'),
             'dt_update' => Yii::t('app', 'Dt Update'),

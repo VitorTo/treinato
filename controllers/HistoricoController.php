@@ -21,17 +21,12 @@ class HistoricoController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        return [
+            'verbs' => [
+                'class' => 'app\filters\TrataracessoFilter',
+                'except' => [],
+            ],
+        ];
     }
 
     /**
@@ -87,6 +82,7 @@ class HistoricoController extends Controller
                 }
 
                 $model = Yii::$app->uteis->dateCreate($model);
+                $model->user_id = $user_id;
                 $model->save();
                 
                 return $this->redirect(['index']);
@@ -103,12 +99,8 @@ class HistoricoController extends Controller
             $peso = Yii::$app->uteis->findModelValue('app\models\Peso', $proporcao->peso_id, 'peso');
         }
 
-        $dadosAtuais['Peso'] = !empty($peso) ? $peso : '';
-        $dadosAtuais['Altura'] = !empty($altura) ? $altura : '';
-
         return $this->render('create', [
             'model' => $model,
-            'dadosAtuais' => $dadosAtuais
         ]);
     }
 
